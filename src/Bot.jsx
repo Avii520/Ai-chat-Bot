@@ -31,7 +31,7 @@ const GeminiChatBot = () => {
     } 
     catch (error) {
       console.log(error)
-      setMessages(prev => [...prev, { text: "Error: Somossa hoyeche!", sender: "bot" }]);
+      setMessages(prev => [...prev, { text: "Error: having some issues!", sender: "bot" }]);
     }
     setLoading(false);
   };
