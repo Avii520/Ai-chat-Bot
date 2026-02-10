@@ -12,7 +12,8 @@
 }
 
 /* 3. HTML ar Body-ke full height deya */
-html, body {
+html,
+body {
   height: 100%;
   -webkit-font-smoothing: antialiased;
 }
