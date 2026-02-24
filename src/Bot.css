@@ -146,6 +146,8 @@
   padding: 15px;
   background-color: #050505;
   border-top: 1px solid #666363;
+  align-items: flex-end;
+  gap: 10px;
 }
 
 .chat-input {
@@ -158,7 +160,7 @@
 }
 
 .send-button {
-  margin-left: 10px;
+  height: 40px;
   padding: 0 20px;
   background-color: #66145b;
   color: white;
@@ -166,6 +168,7 @@
   border-radius: 15px;
   cursor: pointer;
   font-weight: bold;
+  flex-shrink: 0;
 }
 
 .loading-text {
@@ -283,4 +286,212 @@
 /* Bold text */
 .bot-bubble strong {
   font-weight: bold;
+}
+
+/* Header-er main setup */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 20px;
+  position: relative; /* Title center-e rakhar base point */
+  height: 60px;
+}
+
+/* Title-ke perfect majhkhane fixed rakhar logic */
+.chat-header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* Title-er size ja-i hok, eti shob somoy center-e thakbe */
+  font-weight: bold;
+  pointer-events: none; /* Jate title-er karone pash-er button click-e somossya na hoy */
+}
+
+/* Auth container (Profile Image) ke ekdom dane push kora */
+.auth-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-right: 5px; /* Eti button-ke ekdom border-er kache niye jabe */
+}
+
+.profile-circle {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid rgb(69, 139, 41);
+}
+
+/* Logout Popover style */
+.logout-popover {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn {
+  padding: 5px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #6a830f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover {
+  background-color: #333232;
+  transform: scale(1.05);
+}
+
+.plus-icon {
+  margin-top: 10px;
+  margin-right: 0px;
+  size: 500px;
+}
+
+.typing-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.typing-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.bot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.bot-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.send-button:active {
+  transform: scale(0.9);
+  transition: transform 0.1s;
+}
+
+/*Dot-er jonno sequential animation */
+@keyframes dotWave {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px); /* Halka bounching wave effect */
+  }
+}
+
+.loading-text {
+  font-size: 15px;
+  color: #aaa;
+  font-style: italic;
+  display: flex;
+  align-items: flex-end; /* Dot gulo niche align thakbe */
+}
+
+.dot {
+  animation: dotWave 1.4s infinite linear;
+  margin-left: 2px;
+}
+
+/*Ek-ekti dot-er jonno delay*/
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.user-message,
+.bot-message {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Sidebar Glassmorphism*/
+.sidebar {
+  backdrop-filter: blur(5px); /* Pichoner background blur hobe */
+  background-color: rgba(10, 10, 10, 0.8); /* Semi-transparent black */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth spring motion */
+}
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* Ei padding-ti na thakle shesh message input box er niche thakbe */
+  padding-bottom: 100px;
+}
+
+/*  Message entrance animation */
+.message-wrapper {
+  animation: messageSlideUp 0.4s ease-out;
+}
+
+@keyframes messageSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Niche theke opore uthar visual effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
